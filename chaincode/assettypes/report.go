@@ -34,7 +34,7 @@ var Report = assets.AssetType{
 		{
 			Tag:      "assessment",
 			Label:    "Assessment",
-			DataType: "int",
+			DataType: "number",
 		},
 	},
 }

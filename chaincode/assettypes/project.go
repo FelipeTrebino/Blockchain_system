@@ -8,7 +8,7 @@ import (
 
 var Project = assets.AssetType{
 	Tag:         "project",
-	Label:       "project",
+	Label:       "Project",
 	Description: "A project represents a major action by a civil construction company, such as the construction of a building",
 
 	Props: []assets.AssetProp{
@@ -95,7 +95,7 @@ var Project = assets.AssetType{
 			Required: true,
 			Tag:      "number",
 			Label:    "number",
-			DataType: "integer",
+			DataType: "number",
 			// Validate funcion
 			Validate: func(number interface{}) error {
 				numberStr := number.(string)

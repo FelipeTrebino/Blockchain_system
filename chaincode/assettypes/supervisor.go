@@ -34,8 +34,18 @@ var Supervisor = assets.AssetType{
 		},
 		{
 			Tag:      "contact",
-			Label:    "Contact",
-			DataType: "contact",
+			Label:    "Contact (xx) xxxxx-xxxx",
+			DataType: "string",
+			Validate: func(contact interface{}) error {
+				contactStr := contact.(string)
+				if contactStr == "" {
+					return fmt.Errorf("Contact must be non-empty")
+				}
+				if len(contactStr) != 11 {
+					return fmt.Errorf("Contact must have 11 digits")
+				}
+				return nil
+			},
 		},
 	},
 }
