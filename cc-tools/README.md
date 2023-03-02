@@ -1,36 +1,86 @@
-# GoLedger CC Tools
+# Goledger CC Tools Demo Chaincode 
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/goledgerdev/cc-tools)](https://goreportcard.com/report/github.com/goledgerdev/cc-tools)
-[![GoDoc](https://godoc.org/github.com/goledgerdev/cc-tools?status.svg)](https://godoc.org/github.com/goledgerdev/cc-tools)
+## Directory Structure
 
-This project is a GoLedger open-source project aimed at providing tools for Hyperledger Fabric chaincode development in Golang. This might have breaking changes before we arrive at release v1.0.0. 
+- `/fabric2`: Fabric network v2.2 used as a test environment
+- `/chaincode`: chaincode-related files
+- `/ccapi`: chaincode REST API in Golang project
 
-## Getting Started
+The following directories are deprecated:
+- `/fabric`: Fabric network v1.4 used as a test environment (deprecated)
+- `/rest-server`: chaincode REST API in Node.js project (deprecated)
 
-Make sure you visit the repository [goledgerdev/cc-tools-demo](https://github.com/goledgerdev/cc-tools-demo), which is a template of a functional chaincode that uses cc-tools and provides ready-to-use scripts to deploy development networks. This is our preferred way of working, but you can feel free to import the package and assemble the chaincode as you choose. 
+## Development
 
-CC Tools has been tested with Hyperledger Fabric 1.x and 2.x realeases.
+The `cc-tools` library has been tested in Fabric v1.4, v2.2 and v2.4 networks.
 
-## Features
-- Standard asset data mapping (and their properties)
-- Encapsulation of Hyperledger Fabric chaincode sdk interface functions
-- Standard asset key management
-- Basic types of asset properties (text, number, boolean, date) available
-- Basic asset array type (text, number or date arrays) available
-- New asset property types customization
-- Asset within assets available as references
-- Asset array available as references
-- Management of asset details
-- Write permissions by set of organizations for each asset's property
-- Private data collections management by asset (read permissions)
-- Create/Read/Update/Delete (CRUD) transactions embedded
-- Custom transactions, with prior definition of arguments, webservice method (GET, POST etc)
-- Management of transaction details
-- Compatible web service
+Dependencies for chaincode and chaincode API:
 
-## Contributing
-Feel free to fork it, create issues and PRs. We'll be happy to review them.
+- Go 1.14 or higher
 
-## Join our community
+Dependencies for test environment:
 
-If you want to chat about Fabric, cc-tools and blockchain, you can reach GoLedger's technical team at our [Discord](https://discord.com/invite/GndkYHxNyQ)!
+- Docker 20.10.5 or higher
+- Docker Compose 1.28.5 or higher
+- Node v8.17.0
+- Node Package Manager (npm) 6.14.11 or higher
+
+Installation if using Chaincode API Node:
+
+```bash
+$ cd chaincode; go mod vendor; cd ..
+$ cd rest-server; npm install; cd ..
+```
+
+Intallation if using Chaincode API Go:
+
+```bash
+$ cd chaincode; go mod vendor; cd ..
+$ cd ccapi; go mod vendor; cd ..
+```
+
+## Deploying test env in v1.4
+
+After installing, use the script `./startDev.sh` in the root folder to start the development environment. It will
+start all components of the project with 3 organizations.
+To start the development network with only 1 organization, run `$ ./startDev.sh -n 1`.
+
+To apply chaincode changes, run `$ ./upgradeCC.sh <version>` with a version higher than the current one (starts with 0.1).
+To upgrade a chaincode with only one organization, run `$ ./upgradeCC.sh <version> -n 1`
+
+To apply CC API changes, run `$ ./reloadCCAPI.sh`.
+
+## Deploying test env in v2.2
+
+After installing, use the script `./startDev2.sh` in the root folder to start the development environment. It will
+start all components of the project with 3 organizations. Deploying with only 1 org will come in a future version.
+
+To apply chaincode changes, run `$ ./upgradeCC2.sh <version> <sequence>` with a version higher than the current one (starts with 0.1).
+
+To apply CC API changes, run `$ ./reloadCCAPI.sh`.
+
+## Observations for Chaincode API
+
+If you want to deploy the Node.js Chaincode API with the scripts that deploy v2.2 you can uncomment `startDev2.sh:L15` and comment `startDev2.sh:L18`. 
+
+```sh
+## This brings up API in Node
+# cd ./rest-server; ./startDev2.sh; cd ..
+
+## This brings up API in Go
+cd ./ccapi; docker-compose up -d; cd ..
+```
+
+## Automated tryout and test
+
+To test transactions after starting all components, run `$ ./tryout.sh`.
+
+To test transactions using the godog tool, run `$ ./godog.sh`.
+
+## More
+
+You can reach GoLedger developers and `cc-tools` maintainers at our Discord - [Join us!](https://discord.gg/GndkYHxNyQ)
+
+More documentation and details on `cc-tools` can be found at [https://goledger-cc-tools.readthedocs.io/en/latest/](https://goledger-cc-tools.readthedocs.io/en/latest/)
+
+For production deployment please consider using GoFabric - [https://gofabric.io](https://gofabric.io)
