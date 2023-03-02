@@ -16,7 +16,7 @@ var GetReportsBySupervisor = tx.Transaction{
     Label:       "Get Reports by Supervisor CPF",
     Description: "Return all reports that have a specific supervisor CPF, ordered by creation date.",
     Method:      "GET",
-    Callers:     []string{"$org2MSP", "$org3MSP"}, // Only org2 and org3 can call this transaction
+    Callers:     []string{"$org2MSP"}, // Only org2 and org3 can call this transaction
 
     Args: []tx.Argument{
         {
