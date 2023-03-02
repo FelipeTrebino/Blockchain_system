@@ -2,31 +2,29 @@ package assettypes
 
 import (
 	"github.com/goledgerdev/cc-tools/assets"
-	
+
 	"fmt"
 )
 
-var Project = assets.assettypes{
-	Tag: "project",
-	Label: "project",
-	Description: "A project represents a major action by a 
-	civil construction company, such as the construction of a building",
-
+var Project = assets.AssetType{
+	Tag:         "project",
+	Label:       "project",
+	Description: "A project represents a major action by a civil construction company, such as the construction of a building",
 
 	Props: []assets.AssetProp{
 		{
 			//Primary key
 			Required: true,
-			isKey: true,
-			Tag: "id",
-			Label: "id",
+			IsKey:    true,
+			Tag:      "id",
+			Label:    "id",
 			DataType: "string",
-			Writers: []string{`org1MSP`}
-		}
+			Writers:  []string{`org1MSP`, `orgMSP`},
+		},
 		{
 			Required: true,
-			Tag: "name",
-			Label: "name",
+			Tag:      "name",
+			Label:    "name",
 			DataType: "string",
 			// Validate funcion
 			Validate: func(name interface{}) error {
@@ -36,11 +34,11 @@ var Project = assets.assettypes{
 				}
 				return nil
 			},
-		}
+		},
 		{
 			Required: true,
-			Tag: "street",
-			Label: "street",
+			Tag:      "street",
+			Label:    "street",
 			DataType: "string",
 			// Validate funcion
 			Validate: func(street interface{}) error {
@@ -50,11 +48,11 @@ var Project = assets.assettypes{
 				}
 				return nil
 			},
-		}
+		},
 		{
 			Required: true,
-			Tag: "neighborhood",
-			Label: "neighborhood",
+			Tag:      "neighborhood",
+			Label:    "neighborhood",
 			DataType: "string",
 			// Validate funcion
 			Validate: func(neighborhood interface{}) error {
@@ -64,11 +62,11 @@ var Project = assets.assettypes{
 				}
 				return nil
 			},
-		}
+		},
 		{
 			Required: true,
-			Tag: "city",
-			Label: "city",
+			Tag:      "city",
+			Label:    "city",
 			DataType: "string",
 			// Validate funcion
 			Validate: func(city interface{}) error {
@@ -78,11 +76,11 @@ var Project = assets.assettypes{
 				}
 				return nil
 			},
-		}
+		},
 		{
 			Required: true,
-			Tag: "state",
-			Label: "state",
+			Tag:      "state",
+			Label:    "state",
 			DataType: "string",
 			// Validate funcion
 			Validate: func(state interface{}) error {
@@ -92,12 +90,12 @@ var Project = assets.assettypes{
 				}
 				return nil
 			},
-		}
+		},
 		{
 			Required: true,
-			Tag: "number",
-			Label: "number",
-			DataType: "number",
+			Tag:      "number",
+			Label:    "number",
+			DataType: "integer",
 			// Validate funcion
 			Validate: func(number interface{}) error {
 				numberStr := number.(string)
@@ -106,12 +104,12 @@ var Project = assets.assettypes{
 				}
 				return nil
 			},
-		}
+		},
 		{
 			//CEP (zip code)
 			Required: true,
-			Tag: "zipCode",
-			Label: "zipCode (CEP)",
+			Tag:      "zipCode",
+			Label:    "zipCode (CEP)",
 			DataType: "zipCode",
 			// Validate funcion
 			Validate: func(zipCode interface{}) error {
@@ -121,7 +119,6 @@ var Project = assets.assettypes{
 				}
 				return nil
 			},
-		}
-	}
-
+		},
+	},
 }
