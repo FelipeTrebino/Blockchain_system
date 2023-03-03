@@ -35,7 +35,7 @@ var Task = assets.AssetType{
 		{
 			Tag:      "description",
 			Label:    "Description",
-			DataType: "text",
+			DataType: "string",
 		},
 		{
 			Required: true,
