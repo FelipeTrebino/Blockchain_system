@@ -28,7 +28,7 @@ var Project = assets.AssetType{
 			DataType: "string",
 			// Validate funcion
 			Validate: func(name interface{}) error {
-				nameStr := name.(string)
+				nameStr, _ := name.(string)
 				if nameStr == "" {
 					return fmt.Errorf("name must be non-empty")
 				}
@@ -42,7 +42,7 @@ var Project = assets.AssetType{
 			DataType: "string",
 			// Validate funcion
 			Validate: func(street interface{}) error {
-				streetStr := street.(string)
+				streetStr, _ := street.(string)
 				if streetStr == "" {
 					return fmt.Errorf("street must be non-empty")
 				}
@@ -56,7 +56,7 @@ var Project = assets.AssetType{
 			DataType: "string",
 			// Validate funcion
 			Validate: func(neighborhood interface{}) error {
-				neighborhoodStr := neighborhood.(string)
+				neighborhoodStr, _ := neighborhood.(string)
 				if neighborhoodStr == "" {
 					return fmt.Errorf("neighborhood must be non-empty")
 				}
@@ -70,7 +70,7 @@ var Project = assets.AssetType{
 			DataType: "string",
 			// Validate funcion
 			Validate: func(city interface{}) error {
-				cityStr := city.(string)
+				cityStr, _ := city.(string)
 				if cityStr == "" {
 					return fmt.Errorf("city must be non-empty")
 				}
@@ -84,7 +84,7 @@ var Project = assets.AssetType{
 			DataType: "string",
 			// Validate funcion
 			Validate: func(state interface{}) error {
-				stateStr := state.(string)
+				stateStr, _ := state.(string)
 				if stateStr == "" {
 					return fmt.Errorf("state must be non-empty")
 				}
@@ -98,7 +98,7 @@ var Project = assets.AssetType{
 			DataType: "number",
 			// Validate funcion
 			Validate: func(number interface{}) error {
-				numberStr := number.(string)
+				numberStr, _ := number.(string)
 				if numberStr == "" {
 					return fmt.Errorf("number must be non-empty")
 				}
@@ -113,7 +113,7 @@ var Project = assets.AssetType{
 			DataType: "zipCode",
 			// Validate funcion
 			Validate: func(zipCode interface{}) error {
-				zipCodeStr := zipCode.(string)
+				zipCodeStr, _ := zipCode.(string)
 				if zipCodeStr == "" {
 					return fmt.Errorf("zipCode must be non-empty")
 				}

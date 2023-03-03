@@ -25,7 +25,7 @@ var Supervisor = assets.AssetType{
 			Label:    "Name",
 			DataType: "string",
 			Validate: func(name interface{}) error {
-				nameStr := name.(string)
+				nameStr, _ := name.(string)
 				if nameStr == "" {
 					return fmt.Errorf("name must be non-empty")
 				}
@@ -37,7 +37,7 @@ var Supervisor = assets.AssetType{
 			Label:    "Contact (xx) xxxxx-xxxx",
 			DataType: "string",
 			Validate: func(contact interface{}) error {
-				contactStr := contact.(string)
+				contactStr, _ := contact.(string)
 				if contactStr == "" {
 					return fmt.Errorf("Contact must be non-empty")
 				}
