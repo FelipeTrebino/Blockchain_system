@@ -41,9 +41,6 @@ var Supervisor = assets.AssetType{
 				if contactStr == "" {
 					return fmt.Errorf("Contact must be non-empty")
 				}
-				if len(contactStr) != 11 {
-					return fmt.Errorf("Contact must have 11 digits")
-				}
 				return nil
 			},
 		},

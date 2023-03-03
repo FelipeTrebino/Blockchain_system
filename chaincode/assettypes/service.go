@@ -32,7 +32,7 @@ var Service = assets.AssetType{
 			Label:    "The ID of the project",
 			DataType: "->project",
 			Validate: func(projectId interface{}) error {
-				projectIdStr := projectId.(string)
+				projectIdStr, _ := projectId.(string)
 				if projectIdStr == "" {
 					return fmt.Errorf("projectId must be non-empty")
 				}
@@ -46,7 +46,7 @@ var Service = assets.AssetType{
 			DataType: "datetime",
 			// Validate funcion
 			Validate: func(startOfWork interface{}) error {
-				startOfWorkStr := startOfWork.(string)
+				startOfWorkStr, _ := startOfWork.(string)
 				if startOfWorkStr == "" {
 					return fmt.Errorf("startOfWork must be non-empty")
 				}
