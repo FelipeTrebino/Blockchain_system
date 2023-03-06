@@ -1,8 +1,6 @@
 package assettypes
 
 import (
-	"fmt"
-
 	"github.com/goledgerdev/cc-tools/assets"
 )
 
@@ -25,12 +23,6 @@ var Task = assets.AssetType{
 			Tag:      "finished",
 			Label:    "Finished",
 			DataType: "boolean",
-			Validate: func(finished interface{}) error {
-				if finished == nil {
-					return fmt.Errorf("finished must be non-nil")
-				}
-				return nil
-			},
 		},
 		{
 			Tag:      "description",

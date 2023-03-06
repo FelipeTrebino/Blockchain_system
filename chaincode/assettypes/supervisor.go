@@ -2,8 +2,6 @@ package assettypes
 
 import (
 	"github.com/goledgerdev/cc-tools/assets"
-
-	"fmt"
 )
 
 var Supervisor = assets.AssetType{
@@ -24,25 +22,11 @@ var Supervisor = assets.AssetType{
 			Tag:      "name",
 			Label:    "Name",
 			DataType: "string",
-			Validate: func(name interface{}) error {
-				nameStr, _ := name.(string)
-				if nameStr == "" {
-					return fmt.Errorf("name must be non-empty")
-				}
-				return nil
-			},
 		},
 		{
 			Tag:      "contact",
 			Label:    "Contact (xx) xxxxx-xxxx",
 			DataType: "string",
-			Validate: func(contact interface{}) error {
-				contactStr, _ := contact.(string)
-				if contactStr == "" {
-					return fmt.Errorf("Contact must be non-empty")
-				}
-				return nil
-			},
 		},
 	},
 }

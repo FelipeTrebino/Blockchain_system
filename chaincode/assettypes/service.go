@@ -2,8 +2,6 @@ package assettypes
 
 import (
 	"github.com/goledgerdev/cc-tools/assets"
-
-	"fmt"
 )
 
 var Service = assets.AssetType{
@@ -31,27 +29,12 @@ var Service = assets.AssetType{
 			Tag:      "projectId",
 			Label:    "The ID of the project",
 			DataType: "->project",
-			Validate: func(projectId interface{}) error {
-				projectIdStr, _ := projectId.(string)
-				if projectIdStr == "" {
-					return fmt.Errorf("projectId must be non-empty")
-				}
-				return nil
-			},
 		},
 		{
 			Required: true,
 			Tag:      "startOfWork",
 			Label:    "Start of work",
 			DataType: "datetime",
-			// Validate funcion
-			Validate: func(startOfWork interface{}) error {
-				startOfWorkStr, _ := startOfWork.(string)
-				if startOfWorkStr == "" {
-					return fmt.Errorf("startOfWork must be non-empty")
-				}
-				return nil
-			},
 		},
 	},
 }
