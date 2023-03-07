@@ -3,6 +3,7 @@ package txdefs
 import (
 	"encoding/json"
 
+	"fmt"
 	"github.com/goledgerdev/cc-tools/assets"
 	"github.com/goledgerdev/cc-tools/errors"
 	sw "github.com/goledgerdev/cc-tools/stubwrapper"
