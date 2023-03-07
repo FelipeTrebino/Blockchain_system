@@ -35,7 +35,12 @@ var GetReportsBySupervisor = tx.Transaction{
 	},
 
 	Routine: func(stub *sw.StubWrapper, req map[string]interface{}) ([]byte, errors.ICCError) {
-		supervisorCPF, _ := req["supervisorCPF"].(assets.Key)
+		supervisorCPF, ok := req["supervisorCPF"].(assets.Key)
+
+		if !ok {
+			return nil, errors.WrapError(nil, "Parameter supervisorCPF must be an asset")
+		}
+
 		limitJSON, hasLimit := req["limit"].(json.Number)
 		var limit float64
 
@@ -48,6 +53,9 @@ var GetReportsBySupervisor = tx.Transaction{
 				return nil, errors.NewCCError("limit must be greater than 0", 400)
 			}
 		}
+
+		fmt.Printf("SupervisorCPF: %v\n", supervisorCPF)
+		fmt.Printf("Limit: %v\n", limit)
 
 		// Prepare couchdb query
 		query := map[string]interface{}{
