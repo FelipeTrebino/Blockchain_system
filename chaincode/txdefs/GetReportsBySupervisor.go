@@ -23,7 +23,7 @@ var GetReportsBySupervisor = tx.Transaction{
 			Tag:         "supervisorCPF",
 			Label:       "Supervisor CPF",
 			Description: "The CPF of the supervisor",
-			DataType:    "cpf",
+			DataType:    "->supervisor",
 			Required:    true,
 		},
 		{
